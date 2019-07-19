@@ -23,4 +23,10 @@ public class EmployeeController {
 
         return "emp/list";
     }
+
+    @GetMapping("/emp")
+    public String toAddPage() {
+
+        return "add";
+    }
 }
