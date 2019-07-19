@@ -27,6 +27,6 @@ public class EmployeeController {
     @GetMapping("/emp")
     public String toAddPage() {
 
-        return "add";
+        return "emp/add";
     }
 }
