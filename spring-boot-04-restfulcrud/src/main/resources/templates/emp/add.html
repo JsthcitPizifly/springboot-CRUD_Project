@@ -49,21 +49,37 @@
                 <div th:replace="commons/bar::#sidebar(activeUrl='emps')"></div>
 
 				<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-                    <form>
+                    <form th:action="@{/emp}" method="post">
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Email address</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                            <label>LastName</label>
+                            <input name="lastName" type="text" class="form-control" placeholder="admin   ">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputPassword1">Password</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                            <label>Email</label>
+                            <input name="email" type="email" class="form-control" placeholder="admin@admin.com">
                         </div>
-                        <div class="form-group form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                        <div class="form-group">
+                            <label>Gender</label><br/>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="gender"  value="1">
+                                <label class="form-check-label">Male</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="gender"  value="0">
+                                <label class="form-check-label">Female</label>
+                            </div>
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <div class="form-group">
+                            <label>department</label>
+                            <select class="form-control" name="department.id">
+                                <option th:value="${dept.getId()}" th:each="dept:${depts}" th:text="${dept.getDepartmentName()}">1</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Birth</label>
+                            <input name="birth" type="text" class="form-control" placeholder="YYYY-MM-DD">
+                        </div>
+                        <button type="submit" class="btn btn-primary">添加</button>
                     </form>
 
                 </main>
