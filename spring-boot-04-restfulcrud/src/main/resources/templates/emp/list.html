@@ -72,14 +72,17 @@
                                     <td th:text="${emp.getDepartment().getDepartmentName()}"></td>
                                     <td th:text="${#dates.format(emp.getBirth(), 'yyyy-MM-dd HH:mm')}"></td>
                                     <td>
-                                        <button class="btn btn-sm btn-primary">Edit</button>
-                                        <button class="btn btn-sm btn-danger">Delete</button>
+                                        <a class="btn btn-sm btn-primary" th:href="@{/emp/}+${emp.getId()}">Edit</a>
+                                        <button th:attr="del_url=@{/emp/}+${emp.getId()}" class="btn btn-sm btn-danger deleteBtn">Delete</button>
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
                 </main>
+                <form id="deleteEmpFrom"  method="post">
+                    <input type="hidden" name="_method" value="delete"/>
+                </form>
             </div>
         </div>
 
@@ -127,6 +130,11 @@
 				}
 			});
 		</script>
-
+        <script>
+            $(".deleteBtn").click(function(){
+                $("#deleteEmpFrom").attr("action", $(this).attr("del_url")).submit();
+                return false;
+            })
+        </script>
     </body>
 </html>
